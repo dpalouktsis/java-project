@@ -16,7 +16,7 @@ public class Employee_Deletion extends Employee {
 
 	@SuppressWarnings("unchecked")
 	static void DeletionSearch(String crit) {
-		System.out.println("By which criteria do you want to search?");
+
 		for (Employee Employees : Employees) {
 			if (((List<Employee>) Employees).contains(crit)) {
 				System.out.println(Employees.name);
