@@ -2,6 +2,8 @@ package TeamProject;
 
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
 public class MainERP {
 	public static void ExInserts() { // we are inserting the same id for everybody cause it automatically changes//
 		Employee E1 = new Employee("George", "Papadopoulos", "01/02/1980", "Oxford Street 4", 0, "76372", "single");
@@ -32,13 +34,20 @@ public class MainERP {
 			switch (choice) {
 			case 1:
 				Scanner sc2 = new Scanner(System.in);
+				System.out.println("Enter name");
 				String name = sc2.nextLine();
+				System.out.println("Enter surname");
 				String surname = sc2.nextLine();
+				System.out.println("Enter dob");
 				String dob = sc2.nextLine();
+				System.out.println("Enter adress");
 				String adress = sc2.nextLine();
-				int id = sc2.nextInt();
+				System.out.println("Enter phonenum");
 				String phonenum = sc2.nextLine();
+				System.out.println("Enter status(working experience)");
 				String status = sc2.nextLine();
+				System.out.println("Insert an integer to create id");
+				int id = sc2.nextInt();
 				Employee e1 = new Employee(name, surname, dob, adress, id, phonenum, status); // The id of the employee
 																								// is irrelevant//
 				System.out.println("The Employee has been added to the system");
@@ -55,7 +64,16 @@ public class MainERP {
 				System.out.println("The Employee has been erased from the system");
 				choice = -1;
 			case 3:
-				
+				System.out.println("By which criteria do you want to search?");
+				Scanner sc5 = new Scanner(System.in);
+				String crit4 = sc5.nextLine();
+				Employee_Edit.EditSearch(crit4);
+				System.out.println("Select the id of the Employee you want to edit");
+				int id2 = sc5.nextInt();
+				Employee_Edit.EditFin(id2);
+				System.out.println("The Employee has been edited");
+				break;
+
 			}
 		}
 	}

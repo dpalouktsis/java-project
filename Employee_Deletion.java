@@ -1,9 +1,8 @@
 package TeamProject;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
-import ergasia.Shop;
 
 public class Employee_Deletion extends Employee {
 
@@ -18,7 +17,9 @@ public class Employee_Deletion extends Employee {
 	static void DeletionSearch(String crit) {
 
 		for (Employee Employees : Employees) {
-			if (((List<Employee>) Employees).contains(crit)) {
+			if ((Employees.name).contains(crit) || (Employees.surname).contains(crit) || (Employees.dob).contains(crit) ||
+				(Employees.adress).contains(crit) || (Employees.phonenum).contains(crit)
+				|| (Employees.status).contains(crit)) {
 				System.out.println(Employees.name);
 				System.out.println(Employees.surname);
 				System.out.println(Employees.dob);
