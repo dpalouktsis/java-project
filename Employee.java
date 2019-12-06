@@ -1,9 +1,4 @@
-package TeamProject;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.Random;
+import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Employee {
@@ -14,8 +9,16 @@ public class Employee {
 	public int id;
 	public String phonenum;
 	public String status;
-	// private static final AtomicInteger count = new AtomicInteger(0);//
-	static ArrayList<Employee> Employees = new ArrayList<Employee>();
+	private static final AtomicInteger count = new AtomicInteger(0);
+	static HashMap<Integer, Employee> Employees = new HashMap<Integer, Employee>();
+	public HashMap<String, Evaluation> evals = new HashMap<String, Evaluation>();
+	
+	public HashMap<String, Evaluation> getEvals(){
+		return evals;
+	}
+	public int getID() {
+		return id;
+	}
 
 	public Employee(String name, String surname, String dob, String adress, int id, String phonenum, String status) {
 
@@ -23,11 +26,15 @@ public class Employee {
 		this.surname = surname;
 		this.dob = dob;
 		this.adress = adress;
-		Random rd = new Random();
-		this.id = 1000 + rd.nextInt(9000);
-		// Collections.shuffle(Employees);//
+		this.id = id;
 		this.phonenum = phonenum;
-		Employees.add(this);
+		this.evals = new HashMap<String, Evaluation>();
+		id = count.incrementAndGet();
+		Employees.put(this.id, this);
+	}
+	@Override
+	public String toString() {
+		return String.format("ID: %d\r\nFirst Name: %s\r\nLast Name: %s\r\nAdress: %s\r\nPhone Number: %s\r\n", id, name, surname, adress, phonenum);
 	}
 
 }
