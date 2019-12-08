@@ -2,30 +2,32 @@ package TeamProject;
 
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
-
 import javax.swing.JOptionPane;
 
 public class Employee {
-	public final AtomicInteger count = new AtomicInteger(0);
+	private static final AtomicInteger count = new AtomicInteger(0);
 	public String name;
 	public String surname;
 	public String dob;// date of birth//
 	public String adress;
-	public int id;
+	private final int id;
 	public String phonenum;
 	public String status;
 	static ArrayList<Employee> Employees = new ArrayList<Employee>();
-
-	public Employee(String name, String surname, String dob, String adress, int id, String phonenum) {
+	
+	public Employee(String name, String surname, String dob, String adress, String phonenum) {
 
 		this.name = name;
 		this.surname = surname;
 		this.dob = dob;
 		this.adress = adress;
-		this.id = id;
 		this.phonenum = phonenum;
-		id = count.getAndIncrement();
+		this.id = count.getAndIncrement();
 		Employees.add(this);
+	}
+
+	public int getId() {
+		return id;
 	}
 
 	static void Search(String crit) {
@@ -35,7 +37,7 @@ public class Employee {
 				System.out.println(Employees.name);
 				System.out.println(Employees.surname);
 				System.out.println(Employees.dob);
-				System.out.println(Employees.id);
+				System.out.println(Employees.getId());
 
 			}
 

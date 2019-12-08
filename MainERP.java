@@ -5,12 +5,12 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 public class MainERP {
-	public static void ExInserts() { // we are inserting the same id for everybody cause it automatically changes//
-		Employee E1 = new Employee("George", "Papadopoulos", "01/02/1980", "Oxford Street 4", 0, "76372");
-		Employee E2 = new Employee("John", "Lennon", "11/04/1960", "Weird Street 90", 0, "52543");
-		Employee E3 = new Employee("Alex", "Turner", "1/01/1988", "Weirded Street 14", 0, "34242");
-		Employee E4 = new Employee("James", "Hetfield", "21/02/1972", "Scary Street 47", 0, "09772");
-		Employee E5 = new Employee("Sam", "Carter", "30/12/1990", "Spooky Street 5", 0, "798782");
+	public static void ExInserts() {
+		Employee E1 = new Employee("George", "Papadopoulos", "01/02/1980", "Oxford Street 4", "76372");
+		Employee E2 = new Employee("John", "Lennon", "11/04/1960", "Weird Street 90", "52543");
+		Employee E3 = new Employee("Alex", "Turner", "1/01/1988", "Weirded Street 14", "34242");
+		Employee E4 = new Employee("James", "Hetfield", "21/02/1972", "Scary Street 47", "09772");
+		Employee E5 = new Employee("Sam", "Carter", "30/12/1990", "Spooky Street 5", "798782");
 
 	}
 
@@ -44,12 +44,10 @@ public class MainERP {
 				String adress = sc2.nextLine();
 				System.out.println("Enter phonenum");
 				String phonenum = sc2.nextLine();
-				System.out.println("Insert any integer to create id");
-				int id = sc2.nextInt();
-				Employee e1 = new Employee(name, surname, dob, adress, id, phonenum); // The id of the employee
-																						// is irrelevant//
+				Employee e1 = new Employee(name, surname, dob, adress, phonenum); // The id of the employee
+																					// is irrelevant//
 				System.out.println("The Employee has been added to the system");
-				System.out.println(e1.name + " " + e1.surname + " " + e1.id);
+				System.out.println(e1.name + " " + e1.surname + " " + e1.getId());
 				choice = -1;
 				continue;
 			case 2:
@@ -70,6 +68,11 @@ public class MainERP {
 				int id2 = sc5.nextInt();
 				Employee_Edit.EditFin(id2);
 				System.out.println("The Employee has been edited");
+				choice = -1;
+				continue;
+			case 4:
+				System.out.println("Thank you for using our menu");
+				b = true;
 				break;
 
 			}
