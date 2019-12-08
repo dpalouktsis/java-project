@@ -6,11 +6,11 @@ import javax.swing.JOptionPane;
 
 public class MainERP {
 	public static void ExInserts() { // we are inserting the same id for everybody cause it automatically changes//
-		Employee E1 = new Employee("George", "Papadopoulos", "01/02/1980", "Oxford Street 4", 0, "76372", "single");
-		Employee E2 = new Employee("John", "Lennon", "11/04/1960", "Weird Street 90", 0, "52543", "married");
-		Employee E3 = new Employee("Alex", "Turner", "1/01/1988", "Weirded Street 14", 0, "34242", "single");
-		Employee E4 = new Employee("James", "Hetfield", "21/02/1972", "Scary Street 47", 0, "09772", "married");
-		Employee E5 = new Employee("Sam", "Carter", "30/12/1990", "Spooky Street 5", 0, "798782", "single");
+		Employee E1 = new Employee("George", "Papadopoulos", "01/02/1980", "Oxford Street 4", 0, "76372");
+		Employee E2 = new Employee("John", "Lennon", "11/04/1960", "Weird Street 90", 0, "52543");
+		Employee E3 = new Employee("Alex", "Turner", "1/01/1988", "Weirded Street 14", 0, "34242");
+		Employee E4 = new Employee("James", "Hetfield", "21/02/1972", "Scary Street 47", 0, "09772");
+		Employee E5 = new Employee("Sam", "Carter", "30/12/1990", "Spooky Street 5", 0, "798782");
 
 	}
 
@@ -44,25 +44,23 @@ public class MainERP {
 				String adress = sc2.nextLine();
 				System.out.println("Enter phonenum");
 				String phonenum = sc2.nextLine();
-				System.out.println("Enter status(working experience)");
-				String status = sc2.nextLine();
-				System.out.println("Insert an integer to create id");
+				System.out.println("Insert any integer to create id");
 				int id = sc2.nextInt();
-				Employee e1 = new Employee(name, surname, dob, adress, id, phonenum, status); // The id of the employee
-																								// is irrelevant//
+				Employee e1 = new Employee(name, surname, dob, adress, id, phonenum); // The id of the employee
+																						// is irrelevant//
 				System.out.println("The Employee has been added to the system");
+				System.out.println(e1.name + " " + e1.surname + " " + e1.id);
 				choice = -1;
 				continue;
 			case 2:
-				System.out.println("By which criteria do you want to search?");
-				Scanner sc3 = new Scanner(System.in);
-				String crit = sc3.nextLine();
-				Employee_Deletion.DeletionSearch(crit);
+				Employee.getSearch();
 				System.out.println("Select the id of the Employee you want to erase");
+				Scanner sc3 = new Scanner(System.in);
 				int id1 = sc3.nextInt();
-				Employee_Deletion.DeletionFin(id1);
+				Employee.DeletionFin(id1);
 				System.out.println("The Employee has been erased from the system");
 				choice = -1;
+				continue;
 			case 3:
 				System.out.println("By which criteria do you want to search?");
 				Scanner sc5 = new Scanner(System.in);

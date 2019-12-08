@@ -1,14 +1,11 @@
 package TeamProject;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Employee_Edit extends Employee {
 
-	public Employee_Edit(String name, String surname, String dob, String adress, int id, String phonenum,
-			String status) {
-		super(name, surname, dob, adress, id, phonenum, status);
+	public Employee_Edit(String name, String surname, String dob, String adress, int id, String phonenum) {
+		super(name, surname, dob, adress, id, phonenum);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -16,15 +13,14 @@ public class Employee_Edit extends Employee {
 	static void EditSearch(String crit1) {
 
 		for (Employee Employees : Employees) {
-			if (((Employees.name).contains(crit1) || (Employees.surname).contains(crit1) || (Employees.dob).contains(crit1) ||
-					(Employees.adress).contains(crit1) || (Employees.phonenum).contains(crit1)
-					|| (Employees.status).contains(crit1)) ) {
+			if (((Employees.name).contains(crit1) || (Employees.surname).contains(crit1)
+					|| (Employees.dob).contains(crit1) || (Employees.adress).contains(crit1)
+					|| (Employees.phonenum).contains(crit1))) {
 				System.out.println(Employees.name);
 				System.out.println(Employees.surname);
 				System.out.println(Employees.dob);
 				System.out.println(Employees.id);
 				System.out.println(Employees.adress);
-				System.out.println(Employees.status);
 
 			}
 
