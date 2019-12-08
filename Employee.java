@@ -1,8 +1,8 @@
 package TeamProject;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicInteger;
-import javax.swing.JOptionPane;
 
 public class Employee {
 	private static final AtomicInteger count = new AtomicInteger(0);
@@ -46,8 +46,9 @@ public class Employee {
 	}
 
 	public static void getSearch() {
-
-		String crit = JOptionPane.showInputDialog(null, "Please type what you are looking for", JOptionPane.OK_OPTION);
+		Scanner sc0 = new Scanner(System.in);
+		System.out.println("By which criteria do you want to search?");
+		String crit = sc0.nextLine();
 		if (crit != null) {
 			Employee.Search(crit);
 		} else {

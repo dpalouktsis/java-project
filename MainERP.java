@@ -8,7 +8,7 @@ public class MainERP {
 	public static void ExInserts() {
 		Employee E1 = new Employee("George", "Papadopoulos", "01/02/1980", "Oxford Street 4", "76372");
 		Employee E2 = new Employee("John", "Lennon", "11/04/1960", "Weird Street 90", "52543");
-		Employee E3 = new Employee("Alex", "Turner", "1/01/1988", "Weirded Street 14", "34242");
+		Employee E3 = new Employee("Alex", "Turner", "1/01/1988", "Weirder Street 14", "34242");
 		Employee E4 = new Employee("James", "Hetfield", "21/02/1972", "Scary Street 47", "09772");
 		Employee E5 = new Employee("Sam", "Carter", "30/12/1990", "Spooky Street 5", "798782");
 
