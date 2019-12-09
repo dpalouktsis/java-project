@@ -4,8 +4,9 @@ import java.util.Scanner;
 
 public class Employee_Edit extends Employee {
 
-	public Employee_Edit(String name, String surname, String dob, String adress, int id, String phonenum) {
-		super(name, surname, dob, adress, phonenum);
+	public Employee_Edit(String name, String surname, String dob, String adress, int id, String phonenum, double salary,
+			String position) {
+		super(name, surname, dob, adress, phonenum, salary, position);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -20,6 +21,8 @@ public class Employee_Edit extends Employee {
 				System.out.println(Employees.dob);
 				System.out.println(Employees.getId());
 				System.out.println(Employees.adress);
+				System.out.println(Employees.phonenum);
+				System.out.println(Employees.salary);
 
 			}
 
@@ -36,6 +39,7 @@ public class Employee_Edit extends Employee {
 				System.out.println("3.Edit dob");
 				System.out.println("4.Edit adress");
 				System.out.println("5.Edit phonenum");
+				System.out.println("6.Edit salary");
 				int a = sc3.nextInt();// what do you want to edit? with 5 cases//
 				switch (a) {
 				case 1:
@@ -62,6 +66,27 @@ public class Employee_Edit extends Employee {
 					System.out.println("Insert the new phonenum");
 					Scanner sc8 = new Scanner(System.in);
 					Employees.phonenum = sc8.nextLine();
+					break;
+				case 6:
+					System.out.println("Insert the new salary");
+					Scanner sc9 = new Scanner(System.in);
+					Employees.salary = sc9.nextDouble();
+					boolean b = true;
+					while (b) {
+						if (Employees.salary > 758 && Employees.salary <= 1100) {
+							Employees.position = "lowsalary";
+							b = false;
+						} else if (Employees.salary > 1100 && Employees.salary <= 1900) {
+							Employees.position = "mediumsalary";
+							b = false;
+						} else if (Employees.salary > 1900) {
+							Employees.position = "highsalary";
+							b = false;
+						} else {
+							System.out.println("The salary is too low");
+							Employees.salary = sc9.nextDouble();
+						}
+					}
 					break;
 				}
 			}

@@ -12,16 +12,38 @@ public class Employee {
 	public String adress;
 	private final int id;
 	public String phonenum;
-	public String status;
+	public double salary;
+	public String position;
 	static ArrayList<Employee> Employees = new ArrayList<Employee>();
-	
-	public Employee(String name, String surname, String dob, String adress, String phonenum) {
+
+	public Employee(String name, String surname, String dob, String adress, String phonenum, double salary,
+			String position) {
 
 		this.name = name;
 		this.surname = surname;
 		this.dob = dob;
 		this.adress = adress;
 		this.phonenum = phonenum;
+		this.salary = salary;
+		this.position = position;
+		boolean b = true;
+		while (b) {
+			if (this.salary > 758 && this.salary <= 1100) {
+				this.position = "lowsalary";
+				b = false;
+			} else if (this.salary > 1100 && this.salary <= 1900) {
+				this.position = "mediumsalary";
+				b = false;
+			} else if (this.salary > 1900) {
+				this.position = "highsalary";
+				b = false;
+			} else {
+				System.out.println("The salary is too low");
+				Scanner scsal = new Scanner(System.in);
+				this.salary = scsal.nextDouble();
+			}
+		}
+
 		this.id = count.getAndIncrement();
 		Employees.add(this);
 	}
@@ -32,8 +54,8 @@ public class Employee {
 
 	static void Search(String crit) {
 		for (Employee Employees : Employees) {
-			if ((Employees.name).contains(crit) || (Employees.surname).contains(crit) || (Employees.dob).contains(crit)
-					|| (Employees.adress).contains(crit) || (Employees.phonenum).contains(crit)) {
+			if ((Employees.name).contains(crit) || (Employees.surname).contains(crit)
+					|| (Employees.dob).contains(crit)) {
 				System.out.println(Employees.name);
 				System.out.println(Employees.surname);
 				System.out.println(Employees.dob);
@@ -43,6 +65,21 @@ public class Employee {
 
 		}
 
+	}
+
+	public static void SalEdit(String position1) {
+		for (Employee Employees : Employees) {
+
+			if ((Employees.position).contains(position1)) {
+				System.out.println(Employees.name);
+				System.out.println(Employees.surname);
+				System.out.println(Employees.dob);
+				System.out.println(Employees.getId());
+				System.out.println(Employees.adress);
+				System.out.println(Employees.phonenum);
+				System.out.println(Employees.salary);
+			}
+		}
 	}
 
 	public static void getSearch() {
@@ -60,4 +97,5 @@ public class Employee {
 	static void DeletionFin(int id1) {
 		Employees.remove(id1);
 	}
+
 }
