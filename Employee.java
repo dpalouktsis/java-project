@@ -1,6 +1,7 @@
 package TeamProject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -14,7 +15,9 @@ public class Employee {
 	public String phonenum;
 	public double salary;
 	public String position;
-	static ArrayList<Employee> Employees = new ArrayList<Employee>();
+	static HashMap<Integer, Employee> Employees = new HashMap<Integer, Employee>();
+	public ArrayList<Evaluation> evals = new ArrayList<Evaluation>();
+	public ArrayList<TrainingProgram> reqTraining = new ArrayList<TrainingProgram>();
 
 	public Employee(String name, String surname, String dob, String adress, String phonenum, double salary,
 			String position) {
@@ -26,6 +29,7 @@ public class Employee {
 		this.phonenum = phonenum;
 		this.salary = salary;
 		this.position = position;
+		this.evals = new ArrayList<Evaluation>();
 		boolean b = true;
 		while (b) {
 			if (this.salary > 758 && this.salary <= 1100) {
@@ -45,41 +49,19 @@ public class Employee {
 		}
 
 		this.id = count.getAndIncrement();
-		Employees.add(this);
+		Employees.put(this.id, this);
 	}
 
 	public int getId() {
 		return id;
 	}
 
-	public static void methodos(double sal, int id3) {
-		for (Employee Employees : Employees) {
-			if (id3 == Employees.id) {
-				Employees.salary = sal;
-			}
-			boolean b = true;
-			while (b) {
-				if (Employees.salary > 758 && Employees.salary <= 1100) {
-					Employees.position = "lowsalary";
-					b = false;
-				} else if (Employees.salary > 1100 && Employees.salary <= 1900) {
-					Employees.position = "mediumsalary";
-					b = false;
-				} else if (Employees.salary > 1900) {
-					Employees.position = "highsalary";
-					b = false;
-				} else {
-					System.out.println("The salary is too low");
-					Scanner scsal = new Scanner(System.in);
-					Employees.salary = scsal.nextDouble();
-				}
-
-			}
-		}
+	public ArrayList<Evaluation> getEvals() {
+		return evals;
 	}
 
 	static void Search(String crit) {
-		for (Employee Employees : Employees) {
+		for (Employee Employees : Employee.Employees.values()) {
 			if ((Employees.name).contains(crit) || (Employees.surname).contains(crit)
 					|| (Employees.dob).contains(crit)) {
 				System.out.println(Employees.name);
@@ -93,22 +75,6 @@ public class Employee {
 
 	}
 
-	public static void SalEdit(String position1) {
-		for (Employee Employees : Employees) {
-
-			if ((Employees.position).contains(position1)) {
-				System.out.println(Employees.name);
-				System.out.println(Employees.surname);
-				System.out.println(Employees.dob);
-				System.out.println(Employees.getId());
-				System.out.println(Employees.adress);
-				System.out.println(Employees.phonenum);
-				System.out.println(Employees.salary);
-			}
-
-		}
-	}
-
 	public static void getSearch() {
 		Scanner sc0 = new Scanner(System.in);
 		System.out.println("By which criteria do you want to search?");
@@ -119,10 +85,6 @@ public class Employee {
 			System.out.println("No results found");
 		}
 
-	}
-
-	static void DeletionFin(int id1) {
-		Employees.remove(id1);
 	}
 
 }

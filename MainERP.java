@@ -1,22 +1,50 @@
 package TeamProject;
 
+import java.io.FileNotFoundException;
+import java.util.HashSet;
 import java.util.Scanner;
-
-import javax.swing.JOptionPane;
+import java.util.Set;
 
 public class MainERP {
 	public static void ExInserts() {
-		Employee E1 = new Employee("George", "Papadopoulos", "01/02/1980", "Oxford Street 4", "76372", 1000d, "wefef");
-		Employee E2 = new Employee("John", "Lennon", "11/04/1960", "Weird Street 90", "52543", 20000d, "wefef");
-		Employee E3 = new Employee("Alex", "Turner", "1/01/1988", "Weirder Street 14", "34242", 1500d, "wefef");
-		Employee E4 = new Employee("James", "Hetfield", "21/02/1972", "Scary Street 47", "09772", 800d, "wefef");
-		Employee E5 = new Employee("Sam", "Carter", "30/12/1990", "Spooky Street 5", "798782", 1900d, "wefef");
+		Employee E1 = new Employee_Addition("George", "Papadopoulos", "01/02/1980", "Oxford Street 4", "76372", 1000d,
+				"wefef");
+		Employee E2 = new Employee_Addition("John", "Lennon", "11/04/1960", "Weird Street 90", "52543", 20000d,
+				"wefef");
+		Employee E3 = new Employee_Addition("Alex", "Turner", "1/01/1988", "Weirder Street 14", "34242", 1500d,
+				"wefef");
+		Employee E4 = new Employee_Addition("James", "Hetfield", "21/02/1972", "Scary Street 47", "09772", 800d,
+				"wefef");
+		Employee E5 = new Employee_Addition("Sam", "Carter", "30/12/1990", "Spooky Street 5", "798782", 1900d, "wefef");
 
 	}
 
 	public static void main(String[] args) {
 		ExInserts();
+		try {
+			EvalAdd.addEvals("eval2.txt");
+			EvalAdd.addEvals("eval1.txt");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
+		EvalSearch.getPercentage(50, 0);
+
+		Set<String> skills = new HashSet<String>();
+		Set<String> skills1 = new HashSet<String>();
+
+		skills.add("SkillB");
+		skills1.add("SkillC");
+		skills1.add("SkillA");
+
+		TrainingProgram trp2 = new TrainingProgram(2, skills1, "bla");
+		TrainingProgram trp1 = new TrainingProgram(1, skills, "bla");
+
+		TrpMethods.updateEmpTrp(0);// pairnei ta evaluations kai kanei assign ta training programms eite gia olous
+									// eite gia sugkekrimeno//
+		System.out.println(Employee.Employees.get(3).reqTraining); // analoga me ta skills pou den einai kalos bgazei
+																	// programmata pou xreaizetai//
 		int choice = -1;
 		boolean b = false;
 		while (!b) {
@@ -37,7 +65,7 @@ public class MainERP {
 				Scanner sc2 = new Scanner(System.in);
 				System.out.println("Enter name");
 				String name = sc2.nextLine();
-				System.out.println("-----------------------" + "\n\n");
+				System.out.println("-----------------------");
 				System.out.println("Enter surname");
 				String surname = sc2.nextLine();
 				System.out.println("-----------------------");
@@ -56,8 +84,10 @@ public class MainERP {
 				System.out.println("Enter salary");
 				double salary = sc2.nextDouble();
 				System.out.println("-----------------------");
-				Employee e1 = new Employee(name, surname, dob, adress, phonenum, salary, position); // The id of the
-																									// employee
+				Employee e1 = new Employee_Addition(name, surname, dob, adress, phonenum, salary, position); // The id
+																												// of
+																												// the
+				// employee
 				// is irrelevant//
 				System.out.println("The Employee has been added to the system");
 				System.out.println("Name:" + e1.name + " " + "Surname:" + e1.surname + " " + "Id:" + e1.getId() + " "
@@ -69,7 +99,7 @@ public class MainERP {
 				System.out.println("Select the id of the Employee you want to erase");
 				Scanner sc3 = new Scanner(System.in);
 				int id1 = sc3.nextInt();
-				Employee.DeletionFin(id1);
+				Employee_Deletion.DeletionFin(id1);
 				System.out.println("The Employee has been erased from the system");
 				choice = -1;
 				continue;
@@ -89,13 +119,13 @@ public class MainERP {
 																												// name//
 				Scanner scsal87 = new Scanner(System.in);
 				String pos = scsal87.nextLine();
-				Employee.SalEdit(pos);
+				Salaries.SalSearch(pos);
 				System.out.println("Select id");
 				Scanner sc0 = new Scanner(System.in);
 				int id3 = sc0.nextInt();
 				System.out.println("Insert new salary");
 				double sal = sc0.nextDouble();
-				Employee.methodos(sal, id3);
+				Salaries.SalEdit(sal, id3);
 				System.out.println("The Employee salary has been edited");
 				choice = -1;
 				continue;
@@ -106,5 +136,6 @@ public class MainERP {
 
 			}
 		}
+
 	}
 }

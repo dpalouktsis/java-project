@@ -12,7 +12,7 @@ public class Employee_Edit extends Employee {
 
 	static void EditSearch(String crit1) {
 
-		for (Employee Employees : Employees) {
+		for (Employee Employees : Employee.Employees.values()) {
 			if (((Employees.name).contains(crit1) || (Employees.surname).contains(crit1)
 					|| (Employees.dob).contains(crit1) || (Employees.adress).contains(crit1)
 					|| (Employees.phonenum).contains(crit1))) {
@@ -31,7 +31,7 @@ public class Employee_Edit extends Employee {
 	}
 
 	static void EditFin(int id2) {
-		for (Employee Employees : Employees) {
+		for (Employee Employees : Employee.Employees.values()) {
 			if (Employees.getId() == id2) {
 				Scanner sc3 = new Scanner(System.in);
 				System.out.println("1.Edit name");
@@ -40,7 +40,7 @@ public class Employee_Edit extends Employee {
 				System.out.println("4.Edit adress");
 				System.out.println("5.Edit phonenum");
 				System.out.println("6.Edit salary");
-				int a = sc3.nextInt();// what do you want to edit? with 5 cases//
+				int a = sc3.nextInt();// what do you want to edit? with 6 cases//
 				switch (a) {
 				case 1:
 					System.out.println("Insert the new name");
