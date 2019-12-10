@@ -52,6 +52,32 @@ public class Employee {
 		return id;
 	}
 
+	public static void methodos(double sal, int id3) {
+		for (Employee Employees : Employees) {
+			if (id3 == Employees.id) {
+				Employees.salary = sal;
+			}
+			boolean b = true;
+			while (b) {
+				if (Employees.salary > 758 && Employees.salary <= 1100) {
+					Employees.position = "lowsalary";
+					b = false;
+				} else if (Employees.salary > 1100 && Employees.salary <= 1900) {
+					Employees.position = "mediumsalary";
+					b = false;
+				} else if (Employees.salary > 1900) {
+					Employees.position = "highsalary";
+					b = false;
+				} else {
+					System.out.println("The salary is too low");
+					Scanner scsal = new Scanner(System.in);
+					Employees.salary = scsal.nextDouble();
+				}
+
+			}
+		}
+	}
+
 	static void Search(String crit) {
 		for (Employee Employees : Employees) {
 			if ((Employees.name).contains(crit) || (Employees.surname).contains(crit)
@@ -79,6 +105,7 @@ public class Employee {
 				System.out.println(Employees.phonenum);
 				System.out.println(Employees.salary);
 			}
+
 		}
 	}
 

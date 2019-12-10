@@ -26,7 +26,7 @@ public class MainERP {
 				System.out.println("1.Add an employee");
 				System.out.println("2.Erase an employee");
 				System.out.println("3.Search and edit an employee");
-				System.out.println("4.Search and edit an employee's salary");
+				System.out.println("4.Search based on salary levels");
 				System.out.println("5.Log out/Exit system");
 				Scanner sc1 = new Scanner(System.in);
 
@@ -37,22 +37,31 @@ public class MainERP {
 				Scanner sc2 = new Scanner(System.in);
 				System.out.println("Enter name");
 				String name = sc2.nextLine();
+				System.out.println("-----------------------" + "\n\n");
 				System.out.println("Enter surname");
 				String surname = sc2.nextLine();
+				System.out.println("-----------------------");
 				System.out.println("Enter dob");
 				String dob = sc2.nextLine();
+				System.out.println("-----------------------");
 				System.out.println("Enter adress");
 				String adress = sc2.nextLine();
+				System.out.println("-----------------------");
 				System.out.println("Enter phonenum");
 				String phonenum = sc2.nextLine();
+				System.out.println("-----------------------");
 				System.out.println("Enter position");
-				String position =  sc2.nextLine();
+				String position = sc2.nextLine();
+				System.out.println("-----------------------");
 				System.out.println("Enter salary");
 				double salary = sc2.nextDouble();
-				Employee e1 = new Employee(name, surname, dob, adress, phonenum, salary, position); // The id of the employee
+				System.out.println("-----------------------");
+				Employee e1 = new Employee(name, surname, dob, adress, phonenum, salary, position); // The id of the
+																									// employee
 				// is irrelevant//
 				System.out.println("The Employee has been added to the system");
-				System.out.println(e1.name + " " + e1.surname + " " + e1.getId() + " " + e1.salary);
+				System.out.println("Name:" + e1.name + " " + "Surname:" + e1.surname + " " + "Id:" + e1.getId() + " "
+						+ "Salary:" + e1.salary);
 				choice = -1;
 				continue;
 			case 2:
@@ -65,7 +74,7 @@ public class MainERP {
 				choice = -1;
 				continue;
 			case 3:
-				System.out.println("By which criteria do you want to search?");
+				System.out.println("Enter name/surname/salary/dob/address to search?");
 				Scanner sc5 = new Scanner(System.in);
 				String crit4 = sc5.nextLine();
 				Employee_Edit.EditSearch(crit4);
@@ -81,7 +90,13 @@ public class MainERP {
 				Scanner scsal87 = new Scanner(System.in);
 				String pos = scsal87.nextLine();
 				Employee.SalEdit(pos);
-				System.out.println("The Employeesal has been edited");
+				System.out.println("Select id");
+				Scanner sc0 = new Scanner(System.in);
+				int id3 = sc0.nextInt();
+				System.out.println("Insert new salary");
+				double sal = sc0.nextDouble();
+				Employee.methodos(sal, id3);
+				System.out.println("The Employee salary has been edited");
 				choice = -1;
 				continue;
 			case 5:
