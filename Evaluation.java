@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Evaluation {
 
@@ -16,11 +18,63 @@ public class Evaluation {
 		this.skillC = c;
 	}
 
+	public int getEmpID() {
+		return empID;
+	}
+
+	public void setEmpID(int empID) {
+		this.empID = empID;
+	}
+
+	public String getDate() {
+		return date;
+	}
+	
+	public int getYear() {
+		return Integer.parseInt(date.substring(6, 10));
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public int getSkillA() {
+		return skillA;
+	}
+
+	public void setSkillA(int skillA) {
+		this.skillA = skillA;
+	}
+
+	public int getSkillB() {
+		return skillB;
+	}
+
+	public void setSkillB(int skillB) {
+		this.skillB = skillB;
+	}
+
+	public int getSkillC() {
+		return skillC;
+	}
+
+	public void setSkillC(int skillC) {
+		this.skillC = skillC;
+	}
+
+	public static List<Evaluation> getEmpEvals() {
+		return empEvals;
+	}
+
+	public static void setEmpEvals(List<Evaluation> empEvals) {
+		Evaluation.empEvals = empEvals;
+	}
+
 	@Override
 	public String toString() {
 		return String.format("ID: %d\r\nDate: %s\r\nA: %d\r\nB: %d\r\nC: %d\r\n", empID, date, skillA, skillB, skillC);
 	}
 
-	public static HashMap<Integer, HashMap<String, Evaluation>> empEvals = new HashMap<Integer, HashMap<String, Evaluation>>();
+	public static List<Evaluation> empEvals = new ArrayList<Evaluation>();
 
 }

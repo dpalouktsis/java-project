@@ -18,8 +18,7 @@ public class EvalTest {
 				int skillC = Integer.parseInt(input.nextLine().replaceAll("\\D", ""));
 
 				Evaluation newEval = new Evaluation(empID, date, skillA, skillB, skillC);
-				Employee.Employees.get(empID).evals.put(date.substring(4, 8), newEval);
-				Evaluation.empEvals.put(empID, Employee.Employees.get(empID).evals);
+				Evaluation.empEvals.add(newEval);
 			}
 		}
 		EvalSearch.skillsSearch("bla");

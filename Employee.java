@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Employee {
@@ -11,9 +13,10 @@ public class Employee {
 	public String status;
 	private static final AtomicInteger count = new AtomicInteger(0);
 	static HashMap<Integer, Employee> Employees = new HashMap<Integer, Employee>();
-	public HashMap<String, Evaluation> evals = new HashMap<String, Evaluation>();
+	public List<Evaluation> evals = new ArrayList<Evaluation>();
+	public List<TrainingProgram> reqTraining = new ArrayList<TrainingProgram>();
 	
-	public HashMap<String, Evaluation> getEvals(){
+	public List<Evaluation> getEvals(){
 		return evals;
 	}
 	public int getID() {
@@ -28,7 +31,7 @@ public class Employee {
 		this.adress = adress;
 		this.id = id;
 		this.phonenum = phonenum;
-		this.evals = new HashMap<String, Evaluation>();
+		this.evals = new ArrayList<Evaluation>();
 		id = count.incrementAndGet();
 		Employees.put(this.id, this);
 	}
