@@ -16,7 +16,7 @@ public class TrpMethods {
 
 	public static void updateEmpTrp(int empID) {
 
-		if (empID != 999999999) {
+		if (empID != 999) {
 
 			Employee employee = Employee.Employees.get(empID);
 			List<Evaluation> tempEvals = employee.getEvals();
@@ -45,7 +45,7 @@ public class TrpMethods {
 			}
 		}
 
-		if (empID == 9999999) {
+		if (empID == 999) {
 			for (Employee employee : Employee.Employees.values()) {
 
 				List<Evaluation> tempEvals = employee.getEvals();
