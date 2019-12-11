@@ -1,5 +1,3 @@
-package TeamProject;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashSet;
@@ -12,17 +10,17 @@ public class TrainingProgram {
 	protected Set<String> trpSkills = new HashSet<String>();
 	protected String trpDesc;
 	public static List<TrainingProgram> trainingPrograms = new ArrayList<TrainingProgram>();
-
+	
 	public static int noOfSkills(TrainingProgram trp) {
 		return trp.trpSkills.size();
 	}
-
+	
 	public static void sort() {
-		trainingPrograms.sort(Comparator.comparing(TrainingProgram::noOfSkills).reversed()); // se auta pou boithane sta
-																								// perissotera skills me
-																								// fthniousa seira//
+		trainingPrograms.sort(Comparator.comparing(TrainingProgram::noOfSkills).reversed());
 	}
-
+	
+	
+	
 	public TrainingProgram(int id, Set<String> skills, String desc) {
 		this.trpID = id;
 		this.trpSkills = skills;
@@ -30,6 +28,8 @@ public class TrainingProgram {
 		trainingPrograms.add(this);
 		sort();
 	}
+	
+	
 
 	@Override
 	public String toString() {

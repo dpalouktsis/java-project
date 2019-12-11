@@ -1,7 +1,6 @@
-package TeamProject;
-
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.Set;
 
 public class TrpMethods {
@@ -16,23 +15,18 @@ public class TrpMethods {
 
 	public static void updateEmpTrp(int empID) {
 
-		if (empID != 999) {
+		if (empID != 0) {
 
 			Employee employee = Employee.Employees.get(empID);
 			List<Evaluation> tempEvals = employee.getEvals();
-			Set<String> reqs = new HashSet<String>();// gia kathe upallhlo pou pernaei ftiaxnei set gia na dei se poia
-														// skills xreiazetai beltiwsh mesw twn aksiloghsewn//
+			Set<String> reqs = new HashSet<String>();
 
 			for (int i = 0; i < tempEvals.size(); i++) {
 				if (tempEvals.get(i).getYear() == 2018) {
-					if (tempEvals.get(i).getSkillA() <= 2) {
-						reqs.add("SkillA");
-					}
-					if (tempEvals.get(i).getSkillB() <= 2) {
-						reqs.add("SkillB");
-					}
-					if (tempEvals.get(i).getSkillC() <= 2) {
-						reqs.add("SkillC");
+					for (Entry<String, Integer> entry : tempEvals.get(i).skills.entrySet()) {
+						if (entry.getValue() <= 2) {
+							reqs.add(entry.getKey());
+						}
 					}
 					break;
 				}
@@ -45,7 +39,7 @@ public class TrpMethods {
 			}
 		}
 
-		if (empID == 999) {
+		if (empID == 0) {
 			for (Employee employee : Employee.Employees.values()) {
 
 				List<Evaluation> tempEvals = employee.getEvals();
@@ -53,18 +47,13 @@ public class TrpMethods {
 
 				for (int i = 0; i < tempEvals.size(); i++) {
 					if (tempEvals.get(i).getYear() == 2018) {
-						if (tempEvals.get(i).getSkillA() <= 2) {
-							reqs.add("SkillA");
-						}
-						if (tempEvals.get(i).getSkillB() <= 2) {
-							reqs.add("SkillB");
-						}
-						if (tempEvals.get(i).getSkillC() <= 2) {
-							reqs.add("SkillC");
+						for (Entry<String, Integer> entry : tempEvals.get(i).skills.entrySet()) {
+							if (entry.getValue() <= 2) {
+								reqs.add(entry.getKey());
+							}
 						}
 						break;
 					}
-
 				}
 				for (int i = 0; i < TrainingProgram.trainingPrograms.size(); i++) {
 					if (reqs.containsAll(TrainingProgram.trainingPrograms.get(i).trpSkills)) {
