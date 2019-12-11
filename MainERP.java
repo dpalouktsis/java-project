@@ -22,8 +22,8 @@ public class MainERP {
 	public static void main(String[] args) {
 		ExInserts();
 		try {
-			EvalAdd.addEvals("eval2.txt");
-			EvalAdd.addEvals("eval1.txt");
+			EvalAddDynamic.addEvals("eval2.txt");
+			EvalAddDynamic.addEvals("eval1.txt");
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
