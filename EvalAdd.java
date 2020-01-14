@@ -17,7 +17,7 @@ public class EvalAdd {
 				int skillB = Integer.parseInt(input.nextLine().replaceAll("\\D", ""));
 				int skillC = Integer.parseInt(input.nextLine().replaceAll("\\D", ""));
 
-				Evaluation newEval = new Evaluation(empID, date, skillA, skillB, skillC);
+				Evaluation newEval = new Evaluation(empID, date);
 				Employee.Employees.get(empID).evals.add(newEval);
 				Evaluation.empEvals.add(newEval);
 			

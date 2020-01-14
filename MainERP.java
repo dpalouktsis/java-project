@@ -8,29 +8,20 @@ import java.util.InputMismatchException;
 
 public class MainERP {
 	public static void ExInserts() {
-		Employee E1 = new Employee_Addition("George", "Papadopoulos", "01/02/1980", "Oxford Street 4", "76372", 1000d,
+		Employee E1 = new Employee_Addition("George", "Papadopoulos", "01/02/1980", "Oxford Street 4", 6756, 1000d,
 				"wefef");
-		Employee E2 = new Employee_Addition("John", "Lennon", "11/04/1960", "Weird Street 90", "52543", 20000d,
-				"wefef");
-		Employee E3 = new Employee_Addition("Alex", "Turner", "1/01/1988", "Weirder Street 14", "34242", 1500d,
-				"wefef");
-		Employee E4 = new Employee_Addition("James", "Hetfield", "21/02/1972", "Scary Street 47", "09772", 800d,
-				"wefef");
-		Employee E5 = new Employee_Addition("Sam", "Carter", "30/12/1990", "Spooky Street 5", "798782", 1900d, "wefef");
+		Employee E2 = new Employee_Addition("John", "Lennon", "11/04/1960", "Weird Street 90", 5656, 20000d, "wefef");
+		Employee E3 = new Employee_Addition("Alex", "Turner", "1/01/1988", "Weirder Street 14", 1233, 1500d, "wefef");
+		Employee E4 = new Employee_Addition("James", "Hetfield", "21/02/1972", "Scary Street 47", 2109, 800d, "wefef");
+		Employee E5 = new Employee_Addition("Sam", "Carter", "30/12/1990", "Spooky Street 5", 12342152, 1900d, "wefef");
 
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		ExInserts();
-		try {
-			EvalAddDynamic.addEvals("eval2.txt");
-			EvalAddDynamic.addEvals("eval1.txt");
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 
-		EvalSearch.getPercentage(50, 0);
+		EvalAddDynamic.addEvals("eval2.txt");
+		EvalAddDynamic.addEvals("eval1.txt");
 
 		Set<String> skills = new HashSet<String>();
 		Set<String> skills1 = new HashSet<String>();
@@ -42,9 +33,9 @@ public class MainERP {
 		TrainingProgram trp2 = new TrainingProgram(2, skills1, "bla");
 		TrainingProgram trp1 = new TrainingProgram(1, skills, "bla");
 
-		TrpMethods.updateEmpTrp(0);// pairnei ta evaluations kai kanei assign ta training programms eite gia olous
+		//TrpMethods.updateEmpTrp(0);// pairnei ta evaluations kai kanei assign ta training programms eite gia olous
 									// eite gia sugkekrimeno//
-		System.out.println(Employee.Employees.get(3).reqTraining); // analoga me ta skills pou den einai kalos bgazei
+		//System.out.println(Employee.Employees.get(3).reqTraining); // analoga me ta skills pou den einai kalos bgazei
 																	// programmata pou xreaizetai//
 		int choice = -1;
 		boolean b = false;
@@ -56,7 +47,13 @@ public class MainERP {
 				System.out.println("2.Erase an employee");
 				System.out.println("3.Search and edit an employee");
 				System.out.println("4.Search based on salary levels");
-				System.out.println("5.Log out/Exit system");
+				System.out.println("5.Add an Evaluation");
+				System.out.println("6.Add an Evaluation dynamically");
+				System.out.println("7.View all Training Programs");
+				System.out.println("8.Search for Employee training based on id");
+				System.out.println("9.Assign suitable training programs(use id or -1 for everyone)");
+				System.out.println("10.Log out");
+
 				Scanner sc1 = new Scanner(System.in);
 
 				choice = sc1.nextInt();
@@ -76,34 +73,20 @@ public class MainERP {
 				System.out.println("Enter adress");
 				String adress = sc2.nextLine();
 				System.out.println("-----------------------");
-				boolean b = false;
 				System.out.println("Please enter the phone number");
-				do {
-					try {
-						int phonenum = sc2.nextInt();
-						b = true;
-					} catch (InputMismatchException e) {
-						System.err.println("Please insert a valid phone number");
-						sc2.nextLine();
-					}
-				} while (b == false);
+				int phonenum = 0;
+				phonenum = Employee.exc1(phonenum);
+				System.out.println("-----------------------");
+				System.out.println("Please enter the salary");
+				double salary = 0;
+				salary = Employee.exc2(salary);
 				System.out.println("-----------------------");
 				System.out.println("Enter position");
 				String position = sc2.nextLine();
-				System.out.println("-----------------------");
-				boolean b = false;
-				System.out.println("Please enter the salary");
-				do {
-					try {
-						double salary = sc2.nextDouble();
-						b = true;
-					} catch (InputMismatchException e) {
-						System.err.println("Please insert a valid salary");
-						sc2.nextLine();
-					}
-				} while (b == false);
-				System.out.println("-----------------------");
 				Employee e1 = new Employee_Addition(name, surname, dob, adress, phonenum, salary, position); // The id
+																												// and
+																												// the
+																												// position
 																												// of
 																												// the
 				// employee
@@ -149,10 +132,39 @@ public class MainERP {
 				choice = -1;
 				continue;
 			case 5:
+				Scanner scev = new Scanner(System.in);
+				String evname = scev.nextLine();
+				EvalAdd.addEvals(evname);
+				System.out.println("Evaluation added");
+				choice = -1;
+				continue;
+			case 6:
+				Scanner scev1 = new Scanner(System.in);
+				String evname1 = scev1.nextLine();
+				EvalAddDynamic.addEvals(evname1);
+				System.out.println("Evaluation added");
+				choice = -1;
+				continue;
+			case 7:
+				System.out.println("Here are the available Training Programs");
+				TrpMethods.viewAll();
+			case 8:
+				Scanner sctrp1 = new Scanner(System.in);
+				int trpmeth1 = sctrp1.nextInt();
+				TrpMethods.viewEmpTrp(trpmeth1);
+				choice = -1;
+				continue;
+			case 9:
+				Scanner sctrp = new Scanner(System.in);
+				int trpmeth = sctrp.nextInt();
+				TrpMethods.updateEmpTrp(trpmeth);
+				System.out.println("Employee/All employees trained!");
+				choice = -1;
+				continue;
+			case 10:
 				System.out.println("Thank you for using our menu");
 				b = true;
 				break;
-
 			}
 		}
 

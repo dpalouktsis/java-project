@@ -1,3 +1,5 @@
+package TeamProject;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map.Entry;
@@ -15,7 +17,7 @@ public class TrpMethods {
 
 	public static void updateEmpTrp(int empID) {
 
-		if (empID != 0) {
+		if (empID != -1) {
 
 			Employee employee = Employee.Employees.get(empID);
 			List<Evaluation> tempEvals = employee.getEvals();
@@ -39,7 +41,7 @@ public class TrpMethods {
 			}
 		}
 
-		if (empID == 0) {
+		if (empID == -1) {
 			for (Employee employee : Employee.Employees.values()) {
 
 				List<Evaluation> tempEvals = employee.getEvals();

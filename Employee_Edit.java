@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Employee_Edit extends Employee {
 
-	public Employee_Edit(String name, String surname, String dob, String adress, int id, String phonenum, double salary,
+	public Employee_Edit(String name, String surname, String dob, String adress, int id, int phonenum, double salary,
 			String position) {
 		super(name, surname, dob, adress, phonenum, salary, position);
 		// TODO Auto-generated constructor stub
@@ -14,8 +14,7 @@ public class Employee_Edit extends Employee {
 
 		for (Employee Employees : Employee.Employees.values()) {
 			if (((Employees.name).contains(crit1) || (Employees.surname).contains(crit1)
-					|| (Employees.dob).contains(crit1) || (Employees.adress).contains(crit1)
-					|| (Employees.phonenum).contains(crit1))) {
+					|| (Employees.dob).contains(crit1) || (Employees.adress).contains(crit1))) {
 				System.out.println(Employees.name);
 				System.out.println(Employees.surname);
 				System.out.println(Employees.dob);
@@ -65,7 +64,7 @@ public class Employee_Edit extends Employee {
 				case 5:
 					System.out.println("Insert the new phonenum");
 					Scanner sc8 = new Scanner(System.in);
-					Employees.phonenum = sc8.nextLine();
+					Employees.phonenum = sc8.nextInt();
 					break;
 				case 6:
 					System.out.println("Insert the new salary");

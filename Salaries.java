@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Salaries extends Employee {
 
-	public Salaries(String name, String surname, String dob, String adress, String phonenum, double salary,
+	public Salaries(String name, String surname, String dob, String adress, int phonenum, double salary,
 			String position) {
 		super(name, surname, dob, adress, phonenum, salary, position);
 		// TODO Auto-generated constructor stub

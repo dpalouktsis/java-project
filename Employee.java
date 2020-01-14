@@ -2,6 +2,7 @@ package TeamProject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -12,21 +13,21 @@ public class Employee {
 	public String dob;// date of birth//
 	public String adress;
 	private final int id;
-	public String phonenum;
+	public int phonenum;
 	public double salary;
 	public String position;
 	static HashMap<Integer, Employee> Employees = new HashMap<Integer, Employee>();
 	public ArrayList<Evaluation> evals = new ArrayList<Evaluation>();
 	public ArrayList<TrainingProgram> reqTraining = new ArrayList<TrainingProgram>();
 
-	public Employee(String name, String surname, String dob, String adress, String phonenum, double salary,
+	public Employee(String name, String surname, String dob, String adress, int phonenum2, double salary,
 			String position) {
 
 		this.name = name;
 		this.surname = surname;
 		this.dob = dob;
 		this.adress = adress;
-		this.phonenum = phonenum;
+		this.phonenum = phonenum2;
 		this.salary = salary;
 		this.position = position;
 		this.evals = new ArrayList<Evaluation>();
@@ -87,4 +88,37 @@ public class Employee {
 
 	}
 
+	public static double exc2(double salary) {
+		boolean b11 = false;
+		double salary1;
+		Scanner sc2exc = new Scanner(System.in);
+		do {
+			salary1 = 0;
+			try {
+				salary1 = sc2exc.nextDouble();
+				b11 = true;
+			} catch (InputMismatchException e) {
+				System.err.println("Please insert a valid salary");
+				sc2exc.nextLine();
+			}
+
+		} while (b11 == false);
+		return salary1;
+	}
+
+	public static int exc1(int phonenum) {
+		boolean b1 = false;
+		int phonenum1 = 0;
+		Scanner sc2exc = new Scanner(System.in);
+		do {
+			try {
+				phonenum1 = sc2exc.nextInt();
+				b1 = true;
+			} catch (InputMismatchException e) {
+				System.err.println("Please insert a valid phone number");
+				sc2exc.nextLine();
+			}
+		} while (b1 == false);
+		return phonenum1;
+	}
 }

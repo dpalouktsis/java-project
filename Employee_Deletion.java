@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Employee_Deletion extends Employee {
 
-	public Employee_Deletion(String name, String surname, String dob, String adress, String phonenum, double salary,
+	public Employee_Deletion(String name, String surname, String dob, String adress, int phonenum, double salary,
 			String position) {
 		super(name, surname, dob, adress, phonenum, salary, position);
 		// TODO Auto-generated constructor stub
@@ -16,7 +16,7 @@ public class Employee_Deletion extends Employee {
 
 		for (Employee Employees : Employee.Employees.values()) {
 			if ((Employees.name).contains(crit) || (Employees.surname).contains(crit) || (Employees.dob).contains(crit)
-					|| (Employees.adress).contains(crit) || (Employees.phonenum).contains(crit)) {
+					|| (Employees.adress).contains(crit)) {
 				System.out.println(Employees.name);
 				System.out.println(Employees.surname);
 				System.out.println(Employees.dob);
