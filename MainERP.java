@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.InputMismatchException;
 
 public class MainERP {
 	public static void ExInserts() {
@@ -75,14 +76,32 @@ public class MainERP {
 				System.out.println("Enter adress");
 				String adress = sc2.nextLine();
 				System.out.println("-----------------------");
-				System.out.println("Enter phonenum");
-				String phonenum = sc2.nextLine();
+				boolean b = false;
+				System.out.println("Please enter the phone number");
+				do {
+					try {
+						int phonenum = sc2.nextInt();
+						b = true;
+					} catch (InputMismatchException e) {
+						System.err.println("Please insert a valid phone number");
+						sc2.nextLine();
+					}
+				} while (b == false);
 				System.out.println("-----------------------");
 				System.out.println("Enter position");
 				String position = sc2.nextLine();
 				System.out.println("-----------------------");
-				System.out.println("Enter salary");
-				double salary = sc2.nextDouble();
+				boolean b = false;
+				System.out.println("Please enter the salary");
+				do {
+					try {
+						double salary = sc2.nextDouble();
+						b = true;
+					} catch (InputMismatchException e) {
+						System.err.println("Please insert a valid salary");
+						sc2.nextLine();
+					}
+				} while (b == false);
 				System.out.println("-----------------------");
 				Employee e1 = new Employee_Addition(name, surname, dob, adress, phonenum, salary, position); // The id
 																												// of
